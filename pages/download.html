@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script src="https://kit.fontawesome.com/970a0290cd.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../style/index.css">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <body>
+        <header>
+            <img src="../asset/loytik logo plain.svg" width="100">
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="#">Download</a>
+                <a href="">Documentation</a>
+                <a href="https://github.com/zeankundev/loytik" target="_blank">Source code</a>
+            </nav>
+        </header>
+        <div class="body-main">
+            <div class="content-body-main">
+                <h1>Download Loytik</h1>
+            </div>
+        </div>
+        <div class="main-paragraph">
+            <h1>Let's have Loytik installed on your machine! 🥰</h1>
+            <p>Click to copy the code. Paste it on your terminal (Command only for Linux or Mac)</p>
+            <input type="text" class="copy" id="copy" disabled style="pointer-events: all;" value="wget https://github.com/zeankundev/loytik/releases/download/0.9.6/Loytik-Install.sh && chmod +x ./Loytik-Install.sh && ./Loytik-Install.sh" width="400">
+            <button class="button" onclick="copyText()">Copy</button>
+        </div>
+        <script>
+            var copy = document.getElementById('copy'); 
+            function copyText() {
+                copy.select(); 
+                copy.setSelectionRange(0, 99999); 
+                navigator.clipboard.writeText(copy.value); 
+                alert('Copied.');
+            }
+        </script>
+    </body>
+</html>
