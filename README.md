@@ -38,4 +38,35 @@ ninja
 
 **note:** to add loyitik to path on linux, simply cp the release or self-compiled to `/usr/bin` or `/usr/local/bin`
 
+## build instructions for windows
+
+to get install on windows, prepare the following:
+- either cmd or powershell
+- visual studio 2019 community
+- > at the installation, check only **Desktop development with C++ (includes nmake)**
+- cmake. [download it here.](https://github.com/Kitware/CMake/releases/download/v3.24.0-rc2/cmake-3.24.0-rc2-windows-x86_64.msi)
+- git (bash or cmd)
+
+### steps
+1. git clone this repo and cd to it.
+```
+git clone https://github.com/zeankundev/loytik && cd loytik\
+```
+2. make a new folder called **build** and cd to it
+```
+mkdir build && cd loytik
+```
+3. run cmake either from cmd or powershell
+```
+cmake ..
+```
+4. run nmake (make is for unix systems, nmake is for windows systems)
+```
+nmake
+```
+5. then, have fun! to start launching a demo program, open loytik interpreter from cmd or powershell
+```
+loytik.exe ../source/app.lytk
+```
+
 # more features coming soon :)
