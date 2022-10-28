@@ -25,24 +25,28 @@ namespace loytik {
 		std::string error_message("Parsing error: ");
 		error_message += message;
 		return error(std::move(error_message), line_number, char_index);
+		return 1;
 	}
 	
 	error syntax_error(std::string_view message, size_t line_number, size_t char_index) {
 		std::string error_message("Syntax error: ");
 		error_message += message;
 		return error(std::move(error_message), line_number, char_index);
+		return 1;
 	}
 	
 	error semantic_error(std::string_view message, size_t line_number, size_t char_index) {
 		std::string error_message("Semantic error: ");
 		error_message += message;
 		return error(std::move(error_message), line_number, char_index);
+		return 1;
 	}
 	
 	error compiler_error(std::string_view message, size_t line_number, size_t char_index) {
 		std::string error_message("Compiler error: ");
 		error_message += message;
 		return error(std::move(error_message), line_number, char_index);
+		return 1;
 	}
 	
 	error unexpected_error(std::string_view unexpected, size_t line_number, size_t char_index) {
@@ -50,6 +54,7 @@ namespace loytik {
 		message += unexpected;
 		message += "'";
 		return parsing_error(message, line_number, char_index);
+		return 1;
 	}
 	
 	error unexpected_syntax_error(std::string_view unexpected, size_t line_number, size_t char_index) {
@@ -57,6 +62,7 @@ namespace loytik {
 		message += unexpected;
 		message += "'";
 		return syntax_error(message, line_number, char_index);
+		return 1;
 	}
 	
 	error expected_syntax_error(std::string_view expected, size_t line_number, size_t char_index) {
@@ -64,6 +70,7 @@ namespace loytik {
 		message += expected;
 		message += "'";
 		return syntax_error(message, line_number, char_index);
+		return 1;
 	}
 	
 	error undeclared_error(std::string_view undeclared, size_t line_number, size_t char_index) {
@@ -71,6 +78,7 @@ namespace loytik {
 		message += undeclared;
 		message += "'";
 		return semantic_error(message, line_number, char_index);
+		return 1;
 	}
 
 	error wrong_type_error(std::string_view source, std::string_view destination,
@@ -89,6 +97,7 @@ namespace loytik {
 			message += "'";
 		}
 		return semantic_error(message, line_number, char_index);
+		return 1;
 	}
 	
 	error already_declared_error(std::string_view name, size_t line_number, size_t char_index) {
@@ -96,6 +105,7 @@ namespace loytik {
 		message += name;
 		message += "' is already declared";
 		return semantic_error(message, line_number, char_index);
+		return 1;
 	}
 
 	void format_error(const error& err, const get_character& source, std::ostream& output) {
